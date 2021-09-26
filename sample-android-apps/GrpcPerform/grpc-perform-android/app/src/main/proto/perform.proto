@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpcperform";
+
+package perform;
+
+service TestService{
+  rpc GetTime (EmptyMsg) returns (TimeStamp) {}
+  rpc Ping (TimeStamp) returns (EmptyMsg) {}
+}
+
+message EmptyMsg{
+}
+
+message TimeStamp{
+  int64 milliseconds = 1;
+}

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.example.grpc_experimentation";
+
+package grpc_experimentation;
+
+service Maths{
+  rpc Sum (SumInput) returns (SumResult) {}
+  rpc GetFibonacciNumberStream (FibonacciStart) returns (stream FibonacciNumber) {}
+  rpc Time (TimeStamp) returns (Empty) {}
+}
+
+message Empty{
+}
+
+message SumInput{
+  double a = 1;
+  double b = 2;
+}
+
+message SumResult{
+  double result = 1;
+}
+
+message FibonacciStart{
+  int32 f1 = 1;
+  int32 f2 = 2;
+}
+
+message FibonacciNumber{
+  int32 f = 1;
+}
+
+message TimeStamp{
+  int64 milliseconds_since_epoch = 1;
+}
